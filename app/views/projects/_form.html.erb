@@ -32,6 +32,11 @@
   </div>
 
   <div>
+    <%= form.label :contact_id, style: "display: block" %>
+    <%= form.collection_select(:contact_id, Contact.all, :id, :name) %>
+  </div>
+
+  <div>
     <%= form.submit class: 'btn btn-primary my-3' %>
   </div>
 <% end %>

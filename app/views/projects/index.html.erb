@@ -9,6 +9,7 @@
       <th scope="col">Domain</th>
       <th scope="col">Category</th>
       <th scope="col">Start Date</th>
+      <th scope="col">Contact</th>
     </tr>
   </thead>
     <% @projects.each do |project| %>
@@ -17,6 +18,7 @@
         <td><%= project.domain %></td>
         <td><%= project.category %></td>
         <td><%= project.start_date %></td>
+        <td><%= project.contact.name %></td>
       </tr>
       <p>
         
