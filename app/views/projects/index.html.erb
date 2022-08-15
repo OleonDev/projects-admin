@@ -1,14 +1,27 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Projects</h1>
 
 <div id="projects">
-  <% @projects.each do |project| %>
-    <%= render project %>
-    <p>
-      <%= link_to "Show this project", project %>
-    </p>
-  <% end %>
+  <%= link_to "New project", new_project_path, class: 'btn btn-success my-3' %>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Domain</th>
+      <th scope="col">Category</th>
+      <th scope="col">Start Date</th>
+    </tr>
+  </thead>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= link_to project.name, project %></td>
+        <td><%= project.domain %></td>
+        <td><%= project.category %></td>
+        <td><%= project.start_date %></td>
+      </tr>
+      <p>
+        
+      </p>
+    <% end %>
+  </table>
 </div>
 
-<%= link_to "New project", new_project_path %>
