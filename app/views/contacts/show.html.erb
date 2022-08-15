@@ -1,0 +1,12 @@
+<div>
+  <div class="my-3">
+    <%= link_to "Back to contacts", contacts_path %>
+  </div>
+
+<%= render @contact %>
+  <div class="-grid gap-2 d-md-flex justify-content-md-end">
+    <%= link_to "Edit this contact", edit_contact_path(@contact), class: 'btn btn-warning' %>
+    <%= button_to "Destroy this contact", @contact, method: :delete, class: 'btn btn-danger' %>
+  </div>
+
+</div>

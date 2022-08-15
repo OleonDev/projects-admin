@@ -1,0 +1,23 @@
+<h1>Contacts</h1>
+
+<div id="contacts">
+  <%= link_to "New contact", new_contact_path, class: 'btn btn-success my-3' %>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Company</th>
+    </tr>
+  </thead>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= link_to contact.name, contact %></td>
+        <td><%= contact.email %></td>
+        <td><%= contact.phone %></td>
+        <td><%= contact.company %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
