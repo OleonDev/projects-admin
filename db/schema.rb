@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_15_235527) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_16_001211) do
   create_table "contacts", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -40,7 +40,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_15_235527) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "project_id", null: false
+    t.index ["project_id"], name: "index_services_on_project_id"
   end
 
   add_foreign_key "projects", "contacts"
+  add_foreign_key "services", "projects"
 end

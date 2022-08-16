@@ -10,6 +10,17 @@
     <%= button_to "Add #{service} service", add_project_service_path(@project, service:service), class:"btn btn-primary" %>
   <% end %>
 
+  <div class="card-body">
+      <% @project.services.each do |service| %>
+          <div class="row text-<%= service.recurrent ? 'primary' : '' %>">
+            <div class="col"><%= service.name  %></div>
+            <div class="col"><%= service.status  %></div>
+            <div class="col"><%= number_to_currency(service.price)  %></div>
+            <div class="col"><%= service.due_date  %></div>
+          </div>
+      <% end %>
+    </div>
+
 
   <div class="-grid gap-2 d-md-flex justify-content-md-end">
     <%= link_to "Edit this project", edit_project_path(@project), class: 'btn btn-warning' %>
