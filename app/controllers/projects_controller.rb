@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: %i[ show edit update destroy ]
+  before_action :set_project, only: %i[ show edit update destroy addService]
 
   # GET /projects or /projects.json
   def index
@@ -54,6 +54,19 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  # Add service to project
+  def addService
+    respond_to do |format|
+      if @project.addService(params[:service])
+        format.html { redirect_to project_url(@project), notice: "Dev service was successfully added." }
+        format.json { render :show, status: :created, location: @project }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
     end
   end
 
