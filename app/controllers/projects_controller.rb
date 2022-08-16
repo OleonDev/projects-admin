@@ -6,6 +6,10 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
+  def dashboard
+    @services = Service.running
+  end
+
   # GET /projects/1 or /projects/1.json
   def show
   end
