@@ -1,7 +1,7 @@
 module ProjectsHelper
 
     def self.servicesTotal
-        Service.running.sum(:price)
+        Service.active.sum(:price)
     end
 
     def self.count

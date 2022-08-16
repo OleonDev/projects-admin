@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
   end
 
   def dashboard
-    @services = Service.running
+    @services = Service.active
   end
 
   # GET /projects/1 or /projects/1.json
@@ -71,6 +71,19 @@ class ProjectsController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def payService
+    service = Service.find(params[:id])
+
+    service.payments.create(amount: service.price, description: service.description ,date: DateTime.now)    
+
+    service.complete!
+
+    respond_to do |format|
+      format.html { redirect_to project_url(service.project), notice: service.description + ' paid out' }
+      format.json { render :show, status: :created, location: service.project }
     end
   end
 

@@ -15,6 +15,7 @@
             <td><%= service.status %></td>
             <td><%= number_to_currency(service.price) %></td>
             <td><%= service.due_date  %></td>
-            </tr>
+            <td><%= button_to "Pay this service", pay_service_path(service), class:"btn btn-primary" %></td>
+        </tr>
     <% end %>
 </table>
