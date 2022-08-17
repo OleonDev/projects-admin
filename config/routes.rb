@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  post '/projects/:id/service/:service', to: 'projects#addService', as: 'add_project_service'
+  post '/projects/:id/service/', to: 'projects#addService', as: 'add_project_service'
   post '/projects/payservice/:id', to: 'projects#payService', as: 'pay_service'
 
   resources :contacts

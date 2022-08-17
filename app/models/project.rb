@@ -21,7 +21,7 @@ class Project < ApplicationRecord
             recurrent: true,
             start_date: DateTime.now, 
             due_date: due_date, 
-            status:'running'
+            status:'active'
         )
     end
 

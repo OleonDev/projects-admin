@@ -6,9 +6,10 @@
 
   <%= render @project %>
 
-  <% ['hosting'].each do |service| %>
-    <%= button_to "Add #{service} service", add_project_service_path(@project, service:service), class:"btn btn-primary" %>
-  <% end %>
+<%= form_tag("/projects/#{@project.id}/service/", method: "post") do %>
+    <%= select_tag(:service, options_for_select(['Hosting','Domain','SSL','Email'], 'Hosting'), :class=>"form-select") %>  
+    <%= submit_tag("Add Service", :class => "btn btn-primary my-2") %>
+<% end %>
 
 
   <%= render 'services', services: @project.services %>
